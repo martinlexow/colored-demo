@@ -12,4 +12,4 @@ A tiny color picker app that enables the user to determine a color of his choice
 * Solves the mystery on how code and UI can be “connected” with each other
 * Good practice for much of Swift basics like `let`, `var`, `func`, `if`
 
-![](colored-demo-preview.gif)
+![](colored-demo-preview.png)
