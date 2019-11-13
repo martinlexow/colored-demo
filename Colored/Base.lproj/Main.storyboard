@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Colored" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,10 +684,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="280" height="360"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -698,20 +699,116 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="-108" y="288"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Colored" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="mMe-1a-lCP">
+                                <rect key="frame" x="10" y="240" width="240" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="acj-hr-1QG"/>
+                                </constraints>
+                            </customView>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGs-hQ-NTA">
+                                <rect key="frame" x="56" y="143" width="148" height="19"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="xRu-aZ-uMP"/>
+                                <connections>
+                                    <action selector="hueSliderAction:" target="XfG-lQ-9wD" id="Fiv-Vz-tDg"/>
+                                </connections>
+                            </slider>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yBq-Ql-29m">
+                                <rect key="frame" x="56" y="104" width="148" height="19"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="HyJ-q5-xz4"/>
+                                <connections>
+                                    <action selector="saturationSliderAction:" target="XfG-lQ-9wD" id="dRu-yP-KWA"/>
+                                </connections>
+                            </slider>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AQq-of-g4T">
+                                <rect key="frame" x="56" y="65" width="148" height="19"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="gmh-dZ-GiL"/>
+                                <connections>
+                                    <action selector="brightnessSliderAction:" target="XfG-lQ-9wD" id="qG9-AV-n0I"/>
+                                </connections>
+                            </slider>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="a4I-fB-GVA">
+                                <rect key="frame" x="133" y="184" width="117" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2WE-aX-6op"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="l7m-cQ-8ax">
+                                <rect key="frame" x="10" y="184" width="117" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SkK-Fj-aAD"/>
+                                </constraints>
+                            </customView>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-xj-Y80">
+                                <rect key="frame" x="218" y="307" width="28" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="6vB-zg-jgN"/>
+                                    <constraint firstAttribute="width" constant="24" id="f9q-x5-Xfx"/>
+                                </constraints>
+                                <sliderCell key="cell" enabled="NO" alignment="left" maxValue="100" allowsTickMarkValuesOnly="YES" sliderType="circular" id="yny-lu-seh"/>
+                            </slider>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-cu-LxW">
+                                <rect key="frame" x="85" y="16" width="90" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="DT0-NE-vhn"/>
+                                    <constraint firstAttribute="width" constant="78" id="rPI-vX-xXa"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qUj-19-06W">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="randomButtonAction:" target="XfG-lQ-9wD" id="smI-SV-6vr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="a4I-fB-GVA" firstAttribute="top" secondItem="l7m-cQ-8ax" secondAttribute="top" id="3OL-Bt-x1G"/>
+                            <constraint firstItem="a4I-fB-GVA" firstAttribute="trailing" secondItem="mMe-1a-lCP" secondAttribute="trailing" id="4E6-yG-iGS"/>
+                            <constraint firstItem="hGs-hQ-NTA" firstAttribute="top" secondItem="a4I-fB-GVA" secondAttribute="bottom" constant="24" id="9m4-XD-W64"/>
+                            <constraint firstItem="yBq-Ql-29m" firstAttribute="centerX" secondItem="hGs-hQ-NTA" secondAttribute="centerX" id="IAV-Wb-p2J"/>
+                            <constraint firstItem="AQq-of-g4T" firstAttribute="top" secondItem="yBq-Ql-29m" secondAttribute="bottom" constant="24" id="KRM-5S-lLG"/>
+                            <constraint firstAttribute="trailing" secondItem="mMe-1a-lCP" secondAttribute="trailing" constant="10" id="LlE-uX-Rvz"/>
+                            <constraint firstItem="AQq-of-g4T" firstAttribute="centerX" secondItem="hGs-hQ-NTA" secondAttribute="centerX" id="Oru-tM-6YN"/>
+                            <constraint firstItem="yBq-Ql-29m" firstAttribute="top" secondItem="hGs-hQ-NTA" secondAttribute="bottom" constant="24" id="Owz-37-gqZ"/>
+                            <constraint firstItem="xbh-cu-LxW" firstAttribute="centerX" secondItem="AQq-of-g4T" secondAttribute="centerX" id="PBi-Tt-fdP"/>
+                            <constraint firstItem="hGs-hQ-NTA" firstAttribute="centerX" secondItem="mMe-1a-lCP" secondAttribute="centerX" id="Rt4-XP-iYy"/>
+                            <constraint firstItem="l7m-cQ-8ax" firstAttribute="leading" secondItem="mMe-1a-lCP" secondAttribute="leading" id="VRp-gS-31c"/>
+                            <constraint firstItem="AQq-of-g4T" firstAttribute="width" secondItem="yBq-Ql-29m" secondAttribute="width" id="Vwk-kG-H37"/>
+                            <constraint firstItem="xbh-cu-LxW" firstAttribute="top" secondItem="AQq-of-g4T" secondAttribute="bottom" constant="20" id="WqC-Dw-gCF"/>
+                            <constraint firstItem="a4I-fB-GVA" firstAttribute="width" secondItem="l7m-cQ-8ax" secondAttribute="width" id="ZdK-er-ezb"/>
+                            <constraint firstItem="rqv-xj-Y80" firstAttribute="trailing" secondItem="mMe-1a-lCP" secondAttribute="trailing" constant="-6" id="aMf-rK-2Bc"/>
+                            <constraint firstItem="l7m-cQ-8ax" firstAttribute="width" secondItem="mMe-1a-lCP" secondAttribute="width" multiplier="0.5" constant="-3" id="cX6-Nb-2sN"/>
+                            <constraint firstItem="l7m-cQ-8ax" firstAttribute="top" secondItem="mMe-1a-lCP" secondAttribute="bottom" constant="6" id="crE-2Q-wG4"/>
+                            <constraint firstItem="mMe-1a-lCP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="nRK-Hk-duV"/>
+                            <constraint firstItem="yBq-Ql-29m" firstAttribute="width" secondItem="hGs-hQ-NTA" secondAttribute="width" id="oiF-05-ULd"/>
+                            <constraint firstItem="hGs-hQ-NTA" firstAttribute="width" secondItem="mMe-1a-lCP" secondAttribute="width" multiplier="0.6" id="pjr-0z-h5i"/>
+                            <constraint firstItem="rqv-xj-Y80" firstAttribute="top" secondItem="mMe-1a-lCP" secondAttribute="top" constant="6" id="rhZ-X0-vNT"/>
+                            <constraint firstItem="mMe-1a-lCP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="vZM-1i-jae"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="AQq-of-g4T" id="J09-dK-r8a"/>
+                        <outlet property="hueSlider" destination="hGs-hQ-NTA" id="XTc-uB-r9k"/>
+                        <outlet property="primaryColorView" destination="mMe-1a-lCP" id="b2f-ZB-k6J"/>
+                        <outlet property="primaryHueWheel" destination="rqv-xj-Y80" id="fvP-V7-399"/>
+                        <outlet property="saturationSlider" destination="yBq-Ql-29m" id="VoP-sC-3kB"/>
+                        <outlet property="secondaryColorView" destination="l7m-cQ-8ax" id="ZVJ-yL-0a7"/>
+                        <outlet property="tertiaryColorView" destination="a4I-fB-GVA" id="s11-67-WK0"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="294" y="278"/>
         </scene>
     </scenes>
 </document>
